@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource{
+class ViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
+    
+    
+    @IBOutlet weak var tView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
     enum Clas : String{
         case c1 = "数学" , c2 = "英語"
@@ -16,6 +20,11 @@ class ViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataS
     let datalist = [
                     "","数学", "英語"
     ]
+    
+    var ent01:[TimeTable] = []
+    var con01 = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
     
     /* pickerViewの列数 */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -32,6 +41,14 @@ class ViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataS
             pickerView.delegate = self
             pickerView.dataSource = self
         // Do any additional setup after loading the view.
+        pickerView.isHidden = true
+        openBtn.isHidden = true
+        let caData = NSFetchRequest<NSFetchRequestResult>(entityName: "TimeTable")
+        do{
+            ent01 = try con01.fetch(caData) as! [TimeTable]
+        }catch{
+            print("エラーだよ")
+        }
     }
     
     /* pickerViewの表示 */
@@ -49,71 +66,57 @@ class ViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataS
     }
     
     @IBOutlet weak var getu1_text: UILabel!
+    @IBOutlet weak var openBtn: UIButton!
+    
+    @IBAction func selectBtn(_ sender: Any) {
+        pickerView.isHidden = true
+        openBtn.isHidden = true
+    }
     
     @IBAction func getu1(_ sender: Any) {
         /* 授業欄に何も入っていないなら授業を選択 */
         if(((getu1_text.text)) == "") {
-            print("pickerView")
+            pickerView.isHidden = false
+            openBtn.isHidden = false
         /* 入っているならそのページに飛ぶ */
         } else {
             switch getu1_text.text!{
             case Clas.c1.rawValue:
-                print("suugaku")
+                performSegue(withIdentifier: "goSetting", sender: nil)
             case Clas.c2.rawValue:
-                print("eigo")
+                performSegue(withIdentifier: "goSetting", sender: nil)
             default:
                 print("error")
             }
         }
     }
-    @IBAction func getu2(_ sender: Any) {
-    }
-    @IBAction func getu3(_ sender: Any) {
-    }
-    @IBAction func getu4(_ sender: Any) {
-    }
-    @IBAction func getu5(_ sender: Any) {
-    }
-    @IBAction func ka1(_ sender: Any) {
-    }
-    @IBAction func ka2(_ sender: Any) {
-    }
-    @IBAction func ka3(_ sender: Any) {
-    }
-    @IBAction func ka4(_ sender: Any) {
-    }
-    @IBAction func ka5(_ sender: Any) {
-    }
-    @IBAction func sui1(_ sender: Any) {
-    }
-    @IBAction func sui2(_ sender: Any) {
-    }
-    @IBAction func sui3(_ sender: Any) {
-    }
-    @IBAction func sui4(_ sender: Any) {
-    }
-    @IBAction func sui5(_ sender: Any) {
-    }
-    @IBAction func moku1(_ sender: Any) {
-    }
-    @IBAction func moku2(_ sender: Any) {
-    }
-    @IBAction func moku3(_ sender: Any) {
-    }
-    @IBAction func moku4(_ sender: Any) {
-    }
-    @IBAction func moku5(_ sender: Any) {
-    }
-    @IBAction func kin1(_ sender: Any) {
-    }
-    @IBAction func kin2(_ sender: Any) {
-    }
-    @IBAction func kin3(_ sender: Any) {
-    }
-    @IBAction func kin4(_ sender: Any) {
-    }
-    @IBAction func kin5(_ sender: Any) {
-    }
-    
+
 }
 
+@IBDesignable class RoundedButton: UIButton {
+    
+    @IBInspectable var cornerRadius: CGFloat = 0.0
+    @IBInspectable var borderWidth: CGFloat = 0.0
+    @IBInspectable var borderColor: UIColor = UIColor.clear
+    
+    override func draw(_ rect: CGRect) {
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
+        layer.borderColor = borderColor.cgColor
+        clipsToBounds = true
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ent01.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let ent001 = ent01[indexPath.row]
+        cell.textLabel?.text = ent001.name
+        return cell
+    }
+
+}

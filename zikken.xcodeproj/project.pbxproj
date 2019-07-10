@@ -13,6 +13,7 @@
 		D63C483C227AE1340003A9EC /* zikken.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D63C483A227AE1340003A9EC /* zikken.xcdatamodeld */; };
 		D63C483E227AE1350003A9EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63C483D227AE1350003A9EC /* Assets.xcassets */; };
 		D63C4841227AE1350003A9EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63C483F227AE1350003A9EC /* LaunchScreen.storyboard */; };
+		D6C696C72288B2AA00A01499 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C696C62288B2AA00A01499 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D63C483D227AE1350003A9EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D63C4840227AE1350003A9EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D63C4842227AE1350003A9EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6C696C62288B2AA00A01499 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				D63C483F227AE1350003A9EC /* LaunchScreen.storyboard */,
 				D63C4842227AE1350003A9EC /* Info.plist */,
 				D63C483A227AE1340003A9EC /* zikken.xcdatamodeld */,
+				D6C696C62288B2AA00A01499 /* SettingView.swift */,
 			);
 			path = zikken;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D63C483C227AE1340003A9EC /* zikken.xcdatamodeld in Sources */,
+				D6C696C72288B2AA00A01499 /* SettingView.swift in Sources */,
 				D63C4836227AE1340003A9EC /* ViewController.swift in Sources */,
 				D63C4834227AE1340003A9EC /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2JHP2S8N4C;
 				INFOPLIST_FILE = zikken/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2JHP2S8N4C;
 				INFOPLIST_FILE = zikken/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
