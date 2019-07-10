@@ -40,6 +40,7 @@ class ViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataS
         super.viewDidLoad()
             pickerView.delegate = self
             pickerView.dataSource = self
+        print("wqw")
         // Do any additional setup after loading the view.
         pickerView.isHidden = true
         openBtn.isHidden = true
